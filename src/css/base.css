@@ -1,0 +1,14 @@
+:root {
+  --font-ui: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-Monospace, SFMono-Regular, monospace;
+}
+
+html {
+  font-family: var(--font-ui);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}

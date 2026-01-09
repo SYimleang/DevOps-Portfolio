@@ -1,0 +1,12 @@
+html {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  font-family: system-ui;
+}
+
+pre,
+code {
+  font-family: "JetBrains Mono", monospace;
+}
