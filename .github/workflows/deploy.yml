@@ -18,6 +18,12 @@ jobs:
       - name: Verify
         run: ./scripts/verify.sh
 
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli serve
+
+      - name: Run Lighthouse CI
+        run: lhci autorun
+
       - name: Deploy
         run: |
           echo "Deploying application..."

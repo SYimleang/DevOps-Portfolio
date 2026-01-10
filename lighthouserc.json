@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 1,
+      "startServerCommand": "npx serve dist -l 3000",
+      "url": ["http://localhost:3000"],
+      "settings": {
+        "preset": "desktop"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.95 }],
+        "first-contentful-paint": ["error", { "maxNumericValue": 1000 }],
+        "largest-contentful-paint": ["error", { "maxNumericValue": 1200 }],
+        "total-blocking-time": ["error", { "maxNumericValue": 0 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0 }],
+        "speed-index": ["error", { "maxNumericValue": 1000 }]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
