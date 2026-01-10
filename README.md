@@ -1,1 +1,107 @@
-# DevOps-Portfolio
+# DevOps-Portfolio - Static, Fast, Measurable
+
+This repository contains my personal DevOps portfolio website.
+The site is intentionally designed as a production-style static system, prioritizing:
+
+- Performance
+- Stability
+- Deterministic builds
+- Observability
+- Minimal operational complexity
+
+It reflects how I approach real-world systems rather than showcasing UI effects or heavy frameworks.
+
+## Design Goals
+
+| Goal                 | Rationale                |
+| -------------------- | ------------------------ |
+| Static-first         | Zero runtime failures    |
+| Fast by default      | Performance is a feature |
+| Minimal dependencies | Fewer failure modes      |
+| Deterministic builds | Reproducibility          |
+| Measured outcomes    | No assumptions           |
+
+This site deliberately avoids JavaScript frameworks, runtime compilation, and server-side rendering.
+
+## Architecture Overview
+
+Browser
+↓
+CDN (Cloudflare)
+↓
+Static Host (S3 / GitHub Pages)
+
+CI/CD → Immutable Build → Cache-first Delivery
+
+### Key Characteristics
+
+- No application server
+- No Node.js runtime in production
+- No databases
+- No background services
+
+## Technology Stack
+
+Frontend
+
+- HTML5
+- Modern CSS (Grid / Flexbox)
+- System fonts (no external font CDN)
+- Zero runtime JavaScript
+
+## Repository Structure
+
+src/ # Source files
+README.md
+
+## Performance Budget
+
+This project enforces explicit performance budgets.
+Changes that violate these budgets are considered regressions.
+
+### Core Web Performance Targets
+
+| Metric                         | Budget |
+| ------------------------------ | ------ |
+| Lighthouse Performance         | ≥ 95   |
+| First Contentful Paint (FCP)   | ≤ 1.0s |
+| Largest Contentful Paint (LCP) | ≤ 1.2s |
+| Total Blocking Time (TBT)      | 0 ms   |
+| Cumulative Layout Shift (CLS)  | 0      |
+| Speed Index                    | ≤ 1.0s |
+
+### Asset Budgets
+
+| Asset Type | Budget                      |
+| ---------- | --------------------------- |
+| Total JS   | ≤ 30 KB (current: **0 KB**) |
+| Total CSS  | ≤ 50 KB                     |
+| Fonts      | System fonts preferred      |
+| Images     | Optimized, lazy-loaded      |
+| Requests   | Minimal, deterministic      |
+
+### Critical Path Constraints
+
+- No render-blocking JavaScript
+- CSS minimized and scoped
+- Critical CSS inlined
+- Non-critical styles deferred
+- Fonts preloaded or system-native
+
+## Current Performance Results
+
+Measured using Lighthouse (Desktop):
+| Metric | Result |
+| ----------- | ------- |
+| Performance | **100** |
+| FCP | 0.2s |
+| LCP | 0.4s |
+| TBT | 0 ms |
+| CLS | 0 |
+| Speed Index | 0.2s |
+
+## Contact
+
+- GitHub: https://github.com/yourname
+- LinkedIn: https://linkedin.com/in/yourname
+- Email: you@email.com
