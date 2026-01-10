@@ -102,6 +102,6 @@ Measured using Lighthouse (Desktop):
 
 ## Contact
 
-- GitHub: https://github.com/yourname
-- LinkedIn: https://linkedin.com/in/yourname
-- Email: you@email.com
+- GitHub: [SYimleang](https://github.com/SYimleang)
+- LinkedIn: [Sasawat Yimleang](https://www.linkedin.com/in/sasawat-yimleang-564620155/)
+- Email: framilly.eng@gmail.com
