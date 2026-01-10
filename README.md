@@ -1,6 +1,6 @@
 # DevOps-Portfolio - Static, Fast, Measurable
 
-![Availability](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/SYimleang/DevOps-Portfolio/main/status/slo.json)
+<!-- ![Availability](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/SYimleang/DevOps-Portfolio/main/status/slo.json) -->
 
 This repository contains my personal DevOps portfolio website.
 The site is intentionally designed as a production-style static system, prioritizing:
