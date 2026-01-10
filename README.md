@@ -42,12 +42,18 @@ CI/CD → Immutable Build → Cache-first Delivery
 
 ## Technology Stack
 
-Frontend
+### Frontend
 
 - HTML5
 - Modern CSS (Grid / Flexbox)
 - System fonts (no external font CDN)
 - Zero runtime JavaScript
+
+### CI/CD
+
+ - GitHub Actions
+ - Deterministic build scripts
+ - Immutable deployment artifacts
 
 ## Repository Structure
 
@@ -80,6 +86,12 @@ Changes that violate these budgets are considered regressions.
 | Images     | Optimized, lazy-loaded      |
 | Requests   | Minimal, deterministic      |
 
+### Performance Enforcement
+
+This project enforces performance budgets using Lighthouse CI.
+Pull requests or commits that violate performance thresholds will fail the CI pipeline and block deployment.
+Performance is treated as a **release requirement**, not an optimization task.
+
 ### Critical Path Constraints
 
 - No render-blocking JavaScript
@@ -99,6 +111,19 @@ Measured using Lighthouse (Desktop):
 | TBT | 0 ms |
 | CLS | 0 |
 | Speed Index | 0.2s |
+
+## CI/CD Pipeline
+git push
+  → build
+  → optimize
+  → deploy
+  → verify
+  
+### Pipeline Characteristics
+ - Fully automated
+ - No manual deployment steps
+ - Rollback via Git history
+ - Immutable artifacts
 
 ## Contact
 
