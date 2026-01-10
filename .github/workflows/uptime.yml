@@ -18,6 +18,8 @@ jobs:
 
       - name: Probe site
         run: |
+          mkdir -p status
+
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
           START=$(date +%s%3N)
@@ -28,9 +30,13 @@ jobs:
           UP=0
           [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ] && UP=1
 
-          echo "{\"ts\":\"$TIMESTAMP\",\"up\":$UP,\"latency_ms\":$LATENCY}" > probe.json
+          echo "{\"ts\":\"$TIMESTAMP\",\"up\":$UP,\"latency_ms\":$LATENCY}" >> status/raw.ndjson
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: uptime-sample
-          path: probe.json
+      - name: Commit raw samples (batched)
+        run: |
+          git config user.name "probe-bot"
+          git config user.email "probe@github.com"
+          git add status/raw.ndjson
+          git diff --quiet && exit 0
+          git commit -m "chore: append uptime sample"
+          git push
