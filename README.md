@@ -1,5 +1,7 @@
 # DevOps-Portfolio - Static, Fast, Measurable
 
+![Availability](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/SYimleang/DevOps-Portfolio/main/status/slo.json)
+
 This repository contains my personal DevOps portfolio website.
 The site is intentionally designed as a production-style static system, prioritizing:
 
@@ -124,6 +126,17 @@ git push
  - No manual deployment steps
  - Rollback via Git history
  - Immutable artifacts
+
+## Availability & SLO
+
+This service is continuously monitored via automated uptime checks every 5 minutes.
+
+**Service Level Objective (SLO):
+ - Availability target: **99.9%**
+ - Measurement window: 30 days
+ - Error budget: 43.2 minutes/month
+
+Availability is calculated from real HTTP checks and published automatically.
 
 ## Contact
 
