@@ -1,0 +1,30 @@
+name: Hourly Aggregation
+
+permissions:
+    contents: write
+
+on:
+    schedule:
+        - cron: "0 * * * *" # Every hour
+    workflow_dispatch:
+
+jobs:
+    aggregate:
+        runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v4
+         with:
+              name: uptime-sample
+              path: samples
+
+        - name: Aggregate metrics
+          run: ./scripts/aggregate-uptime.sh
+
+        - name: Commit summary
+          run: |
+            git config user.name "metrics-bot"
+            git config user.email "metrics@github.com"
+            git add status/hourly.ndjson
+            git commit -m "chore: hourly availability + latency"
+            git push

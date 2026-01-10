@@ -1,4 +1,4 @@
-name: Uptime Monitor
+name: Uptime Probe
 
 on:
   schedule:
@@ -16,25 +16,21 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Check site availability
+      - name: Probe site
         run: |
-          set -e
-          if curl -s --fail --max-time 5 https://devops-portfolio-zk9.pages.dev/ > /dev/null; then
-              echo "UP=1" >> $GITHUB_ENV
-          else
-              echo "UP=0" >> $GITHUB_ENV
-          fi
-
-      - name: Record result
-        run: |
-          mkdir -p status
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          echo "{\"timestamp\":\"$TIMESTAMP\",\"up\":$UP}" >> status/log.ndjson
 
-      - name: Commit status
-        run: |
-          git config --global user.name "uptime-bot"
-          git config --global user.email "uptime@github.com"
-          git add status/log.ndjson
-          git commit -m "chore: uptime check" || exit 0
-          git push
+          START=$(date +%s%3N)
+          HTTP_CODE=$(curl -o /dev/null -s -w "%{http_code}" --max-time 5 https://devops-portfolio-zk9.pages.dev/health.html || echo 000)
+          END=$(date +%s%3N)
+
+          LATENCY=$((END - START))
+          UP=0
+          [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ] && UP=1
+
+          echo "{\"ts\":\"$TIMESTAMP\",\"up\":$UP,\"latency_ms\":$LATENCY}" > probe.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uptime-sample
+          path: probe.json
