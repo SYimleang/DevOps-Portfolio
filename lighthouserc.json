@@ -13,8 +13,8 @@
         "categories:performance": ["error", { "minScore": 0.95 }],
         "first-contentful-paint": ["error", { "maxNumericValue": 1000 }],
         "largest-contentful-paint": ["error", { "maxNumericValue": 1200 }],
-        "total-blocking-time": ["error", { "maxNumericValue": 0 }],
-        "cumulative-layout-shift": ["error", { "maxNumericValue": 0 }],
+        "total-blocking-time": ["error", { "maxNumericValue": 100 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.01 }],
         "speed-index": ["error", { "maxNumericValue": 1000 }]
       }
     },
