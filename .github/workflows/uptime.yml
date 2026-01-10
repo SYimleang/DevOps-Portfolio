@@ -1,0 +1,36 @@
+name: Uptime Monitor
+
+on:
+  schedule:
+    - cron: "*/5 * * * *" # Every 5 minutes
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check site availability
+        run: |
+          set -e
+          if curl -s --fail --max-time 5 https://devops-portfolio-zk9.pages.dev/ > /dev/null; then
+              echo "UP=1" >> $GITHUB_ENV
+          else
+              echo "UP=0" >> $GITHUB_ENV
+          fi
+
+      - name: Record result
+        run: |
+          mkdir -p status
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "{\"timestamp\":\"$TIMESTAMP\",\"up\":$UP}" >> status/log.ndjson
+
+      - name: Commit status
+        run: |
+          git config --global user.name "uptime-bot"
+          git config --global user.email "uptime@github.com"
+          git add status/log.ndjson
+          git commit -m "chore: uptime check" || exit 0
+          git push

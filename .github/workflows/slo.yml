@@ -1,0 +1,24 @@
+name: SLO Calculation
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Every day at midnight
+  workflow_dispatch:
+
+jobs:
+  slo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Calculate SLO
+        run: ./scripts/calc-slo.sh
+
+      - name: Commit SLO
+        run: |
+          git config user.name "slo-bot"
+          git config user.email "slo@github.com"
+          git add status/slo.json
+          git commit -m "chore: update SLO" || exit 0
+          git push
