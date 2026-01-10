@@ -1,0 +1,144 @@
+/* --------------------------
+--------- CSS RESET --------- 
+-------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* --------------------------
+--------- LAYOUT --------- 
+-------------------------- */
+
+section {
+  margin-bottom: 3rem;
+}
+
+footer {
+  border-top: 1px solid #21262d;
+  padding: 1.5rem;
+  text-align: center;
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+/* --------------------------
+--------- TYPOGRAPHY -------- 
+-------------------------- */
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.accent {
+  font-family: monospace;
+  color: #58a6ff;
+}
+
+.muted {
+  color: #8b949e;
+}
+
+/* --------------------------
+----------- METRIC ---------- 
+-------------------------- */
+#metric {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.metric {
+  border: 1px solid #21262d;
+  padding: 1rem;
+  text-align: center;
+}
+
+.metric .label {
+  display: block;
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+.metric .value {
+  font-size: 1.5rem;
+  font-family: monospace;
+}
+
+/* --------------------------
+--------- CODE & PRE -------- 
+-------------------------- */
+pre,
+code {
+  background-color: #161b22;
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #c9d1d9;
+  overflow-x: auto;
+}
+
+code {
+  display: block;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #8b949e;
+  margin-top: 0.5rem;
+}
+
+/* --------------------
+--------- LIST -------- 
+-------------------- */
+ul {
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* -----------------------
+--------- PROJECT -------- 
+----------------------- */
+.project {
+  border-left: 3px solid #30363d;
+  padding-left: 1rem;
+}
+
+.project .link a {
+  margin-right: 1rem;
+}
+
+/* --------------------
+--------- LINK -------- 
+-------------------- */
+a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ----------------------
+------- RESPONSIVE ------ 
+---------------------- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+}

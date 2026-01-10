@@ -25,32 +25,166 @@
     <link
       rel="preload"
       href="../fonts/Inter-Regular.woff2"
-      as="fonts"
+      as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
       href="../fonts/JetBrainsMono-Regular.woff2"
-      as="fonts"
+      as="font"
       type="font/woff2"
       crossorigin
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/src/css/styles.css" type="text/css" />
-    <link rel="stylesheet" href="/src/css/fonts.css" type="text/css" />
+    <link rel="preload" href="/src/css/main.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="/src/css/main.css">
+    </noscript>
 
     <!-- Favicon -->
     <link rel="icon" href="../images/favicon/favicon.ico" type="image/x-icon" />
+
+    <!-- SEO -->
+    <!-- <link rel="canonical" href="https://sasawat.dev/" /> -->
+
+    <!-- Inline styles -->
+    <style>
+      body {
+        margin: 1rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .role {
+        font-family: monospace;
+        color: #8b949e;
+      }
+    </style>
   </head>
   <body>
-    <h1>Sasawat Yimleang's DevOps Engineer Portfolio</h1>
-    <p>
-      Explore my expertise in Azure, AWS, CI/CD, Infrastructure as Code,
-      Terraform, Kubernetes, and Docker.
-    </p>
+    <main>
+      <!-- HERO -->
+      <section id="hero-section">
+        <h1>Sasawat Yimleang</h1>
+        <p class="role">DevOps Engineer</p>
+        <p class="tagline">
+          I build reliable, fast, and observable systems.<br />
+          <span class="accent">Static-first. Measure. Automated.</span>
+        </p>
+      </section>
 
-    <!-- <pre>JetBrains Mono test</pre> -->
+      <!-- METRICS -->
+      <section id="metrics">
+        <h2>Metrics: Before Deploy</h2>
+        <div class="metric">
+          <span class="label">Lighthouse Performance</span>
+          <span class="value">100</span>
+        </div>
+        <div class="metric">
+          <span class="label">Time to first byte</span>
+          <span class="value">0 ms</span>
+        </div>
+        <div class="metric">
+          <span class="label">Total Blocking Time</span>
+          <span class="value">0 ms</span>
+        </div>
+        <div class="metric">
+          <span class="label">Speed Index</span>
+          <span class="value">0.2 s</span>
+        </div>
+        
+      </section>
+
+      <!-- ARCHITECTURE -->
+      <section id="architecture">
+        <h2>Architecture Diagram</h2>
+        <pre>
+          Browser
+            ↓
+          Cloudflare CDN
+            ↓
+          Static Host (S3 / GitHub Pages)
+
+          CI/CD → Immutable Build → Cache-first Delivery
+        </pre>
+      </section>
+
+      <!-- CAPABILITIES -->
+      <section id="capabilities">
+        <h2>DevOps Capabilities</h2>
+        <ul>
+          <li><strong>CI/CD:</strong> GitHub Actions, Azure DevOps</li>
+          <li><strong>Cloud Platforms:</strong> Azure, AWS</li>
+          <li><strong>Infrastructure:</strong> Terraform, Cloudflare</li>
+          <li>
+            <strong>Observability:</strong> Metrics, uptime, performance budgets
+          </li>
+          <li>
+            <strong>Performance:</strong> CDN caching, compression, static-first
+          </li>
+          <li><strong>Security:</strong> Least privilege, secrets hygiene</li>
+        </ul>
+      </section>
+
+      <!-- PIPELINE -->
+      <section id="pipeline">
+        <h2>CI/CD Pipeline</h2>
+        <code> git push → build → optimize → deploy → verify </code>
+        <p class="note">Fully automated. No manual steps. Rollback via Git.</p>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <article class="project">
+          <h3>DevOps Portfolio Website</h3>
+          <p>
+            Built and maintained my personal portfolio website showcasing my
+            DevOps skills and projects.
+          </p>
+          <ul>
+            <li>Build time: &lt;0.2 seconds</li>
+            <li>Lighthouse score: 100</li>
+            <li>Zero runtime dependencies</li>
+          </ul>
+          <p class="links">
+            <a href="https://github.com/SYimleang/DevOps-Portfolio">Source</a>
+          </p>
+        </article>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          <a href="">Resume</a> |
+          <a href="https://github.com/SYimleang">GitHub</a> |
+          <a href="https://www.linkedin.com/in/sasawat-yimleang-564620155/"
+            >LinkedIn</a
+          >
+          |
+          <a href="mailto:framilly.eng@gmail.com">Email</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built as a static system with performance, stability, and automation in mind.</p>
   </body>
 </html>
