@@ -6,21 +6,28 @@ echoo "===> Aggregating uptime data..."
 mkdir -p status
 
 TS=$(date -u +"%Y-%m-%dT%H:00:00Z")
+FILE=status/hourly.ndjson
 
-# last 12 samples = 1 hour
-HOUR=$(tail -n 12 status/raw.ndjson)
+UP=0
+LATENCIES=()
 
-TOTAL=$(echo "$HOUR" | wc -l)
-UP=$(echo "$HOUR" | grep '"up":1' | wc -l)
+for i in {1..12}; do
+START=$(date +%s%3N)
+HTTP_CODE=$(curl -o /dev/null -s -w "%{http_code}" --max-time 5 https://YOUR_SITE/health.html || echo 000)
+END=$(date +%s%3N)
 
-AVAIL=$(awk "BEGIN { printf \"%.3f\", ($UP/$TOTAL)*100 }")
+LAT=$((END - START))
+LATENCIES+=($LAT)
 
-P95=$(echo "$HOUR" | jq '.latency_ms' | sort -n | awk 'NR==int(NR*0.95)')
+[ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ] && UP=$((UP+1))
 
-echo "{\"hour\":\"$TS\",\"availability\":$AVAIL,\"p95_latency_ms\":$P95}" >> status/hourly.ndjson
+sleep 5
+done
 
-# Remove processed samples
-tail -n +13 status/raw.ndjson > status/raw.tmp || true
-mv status/raw.tmp status/raw.ndjson
+AVAIL=$(awk "BEGIN { printf \"%.3f\", ($UP/12)*100 }")
+
+P95=$(printf "%s\n" "${LATENCIES[@]}" | sort -n | awk 'NR==int(NR*0.95)')
+
+echo "{\"hour\":\"$TS\",\"availability\":$AVAIL,\"p95_latency_ms\":$P95}" >> "$FILE"
 
 echo "Aggregation complete!"
