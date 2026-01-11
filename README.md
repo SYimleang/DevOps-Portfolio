@@ -1,6 +1,10 @@
 # DevOps-Portfolio - Static, Fast, Measurable
 
-<!-- ![Availability](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/SYimleang/DevOps-Portfolio/main/status/slo.json) -->
+
+| **Cloudflare status**  |  [![Live Site](https://img.shields.io/badge/Cloudflare_Pages-Live-orange?logo=cloudflare)](https://devops-portfolio-zk9.pages.dev/) |
+|---|---|
+| **Deploy status**  |  [![Cloudflare Pages Deploy](https://github.com/SYimleang/DevOps-Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/SYimleang/DevOps-Portfolio/actions/workflows/deploy.yml) |
+<!-- | Availability | ![Availability](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/SYimleang/DevOps-Portfolio/main/status/slo.json) | -->
 
 This repository contains my personal DevOps portfolio website.
 The site is intentionally designed as a production-style static system, prioritizing:
@@ -74,7 +78,7 @@ Changes that violate these budgets are considered regressions.
 | Lighthouse Performance         | ≥ 95   |
 | First Contentful Paint (FCP)   | ≤ 1.0s |
 | Largest Contentful Paint (LCP) | ≤ 1.2s |
-| Total Blocking Time (TBT)      | 0 ms   |
+| Total Blocking Time (TBT)      | ≤ 100ms|
 | Cumulative Layout Shift (CLS)  | 0      |
 | Speed Index                    | ≤ 1.0s |
 
